@@ -1,13 +1,6 @@
 export default {
-  // Dev environment
-  dev: process.env.NODE_ENV !== 'production',
-
-  // env
-  env: {
-    baseURL: process.env.BASE_URL || 'http://localhost:3000'
-  },
-
-  serverMiddleware: ['~/server-middleware/app'],
+  // Target: https://go.nuxtjs.dev/config-target
+  target: 'server',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'mvflix',
@@ -53,5 +46,11 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extend(config, isClient) {
+      config.node = {
+        fs: "empty"
+      };
+    }
+  },
 }
